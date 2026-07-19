@@ -1,0 +1,12 @@
+# Build artifact
+mojo_llm_bin
+*.o
+*.a
+
+# Python
+__pycache__/
+*.pyc
+
+# Editor
+.vscode/
+.idea/
