@@ -6,7 +6,11 @@ mojo_llm_bin
 # Python
 __pycache__/
 *.pyc
+.venv/
 
 # Editor
 .vscode/
 .idea/
+
+# Data (cache, logs, experiences)
+data/
