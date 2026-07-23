@@ -89,16 +89,6 @@ TURKISH_SOURCES: List[Source] = [
     Source("YÖK Tez Merkezi", "https://tez.yok.gov.tr/", SourceType.ACADEMIC, Category.GENERAL, priority=6, tags=["tez", "akademik"]),
     Source("DergiPark", "https://dergipark.org.tr/", SourceType.ACADEMIC, Category.GENERAL, priority=7, tags=["dergi", "akademik", "makale"]),
     Source("TR Dizin", "https://www.trdizin.gov.tr/", SourceType.ACADEMIC, Category.GENERAL, priority=7, tags=["akademik", "makale"]),
-
-    # ── YouTube Kanalları (Türkçe) ──
-    Source("Ege Acar", "https://www.youtube.com/@EgeAcar", SourceType.YOUTUBE, Category.SOFTWARE, priority=8, tags=["yazılım", "python", "eğitim"]),
-    Source("Kodlama TV", "https://www.youtube.com/@kodlamatv", SourceType.YOUTUBE, Category.SOFTWARE, priority=7, tags=["yazılım", "programlama"]),
-    Source("Emrah Yücel", "https://www.youtube.com/@emrahyucel", SourceType.YOUTUBE, Category.AI, priority=7, tags=["yapay-zeka", "ml", "python"]),
-    Source("Yazılım Günlüğü", "https://www.youtube.com/@yazilimgunlugu", SourceType.YOUTUBE, Category.SOFTWARE, priority=6, tags=["yazılım", "kariyer"]),
-    Source("Barış Özcan", "https://www.youtube.com/@barisozcan", SourceType.YOUTUBE, Category.SCIENCE, priority=8, tags=["bilim", "teknoloji", "sanat"]),
-    Source("Bilim Adamı", "https://www.youtube.com/@bilimadami", SourceType.YOUTUBE, Category.SCIENCE, priority=7, tags=["bilim", "popüler"]),
-    Source("Felsefe Sokağı", "https://www.youtube.com/@felsefesokagi", SourceType.YOUTUBE, Category.PHILOSOPHY, priority=7, tags=["felsefe", "düşünce"]),
-    Source("Tarihçe", "https://www.youtube.com/@tarihce", SourceType.YOUTUBE, Category.HISTORY, priority=6, tags=["tarih", "osmanlı"]),
 ]
 
 

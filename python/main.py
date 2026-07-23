@@ -23,7 +23,6 @@ from pipeline import (
     Category,
     SourceType,
     get_sources,
-    get_youtube_channels,
     source_stats,
 )
 
@@ -31,10 +30,6 @@ from pipeline import (
 def cmd_sources():
     """Mevcut kaynakları göster."""
     print(source_stats())
-    print("\n─── YouTube Kanalları ───")
-    for ch in get_youtube_channels():
-        print(f"  [{ch.priority}] {ch.name} — {ch.url}")
-        print(f"      Tags: {', '.join(ch.tags)}")
 
 
 def cmd_web(args):
@@ -65,41 +60,6 @@ def cmd_web(args):
     print(pipeline.summary())
 
 
-def cmd_youtube(args):
-    """YouTube transcript çek."""
-    pipeline = ContentPipeline(data_dir="data")
-
-    if args.url:
-        print(f"▶ YouTube video: {args.url}")
-        items = pipeline.process_url(args.url, source_type="youtube")
-        print(f"  ✓ {len(items)} tecrübe kaydedildi")
-    elif args.channel:
-        print(f"▶ Kanal aranıyor: {args.channel}")
-        channels = get_youtube_channels()
-        found = [ch for ch in channels if args.channel.lower() in ch.name.lower()]
-        if not found:
-            print(f"  ✗ Kanal bulunamadı. Mevcut kanallar:")
-            for ch in channels:
-                print(f"    - {ch.name}")
-            return
-        for ch in found:
-            print(f"  ▶ {ch.name} işleniyor...")
-            items = pipeline.process_source(ch, max_items=args.max)
-            print(f"  ✓ {len(items)} tecrübe")
-    else:
-        print("▶ Tüm YouTube kanalları işleniyor...")
-        channels = get_youtube_channels()
-        total = 0
-        for ch in channels:
-            print(f"  ▶ {ch.name}...")
-            items = pipeline.process_source(ch, max_items=args.max)
-            total += len(items)
-            print(f"    ✓ {len(items)} tecrübe")
-        print(f"\n  Toplam: {total} tecrübe")
-
-    print(pipeline.summary())
-
-
 def cmd_stats():
     """İstatistikleri göster."""
     pipeline = ContentPipeline(data_dir="data")
@@ -125,7 +85,7 @@ def main():
 
     parser.add_argument(
         "--mode",
-        choices=["web", "youtube", "all", "sources", "stats"],
+        choices=["web", "all", "sources", "stats"],
         default="sources",
         help="Çalışma modu",
     )
@@ -149,10 +109,8 @@ def main():
         cmd_sources()
     elif args.mode == "web":
         cmd_web(args)
-    elif args.mode == "youtube":
-        cmd_youtube(args)
     elif args.mode == "all":
-        cmd_web(args)  # all mode uses process_all
+        cmd_web(args)
     elif args.mode == "stats":
         cmd_stats()
 
